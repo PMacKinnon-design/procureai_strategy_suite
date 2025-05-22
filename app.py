@@ -25,7 +25,7 @@ st.markdown(
 )
 
 # Branding Banner
-st.image("MacKinnon Consulting Logo.png", width=120)
+st.image("assets/mackinnon_logo.png", width=120)
 st.markdown("<h1 style='color: #1F4E79;'>ProcureAI Strategy Suite</h1>", unsafe_allow_html=True)
 st.markdown("#### Consulting That Delivers – Powered by MacKinnon Consulting")
 
