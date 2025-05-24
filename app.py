@@ -20,7 +20,7 @@ with open("Health_Check_Questionnaire_Template_v2.xlsx", "rb") as f:
     st.download_button("Download Health Check Questionnaire", f, file_name="Health_Check_Questionnaire_Template.xlsx")
 with open("AI_Readiness_Questionnaire_Template_v2.xlsx", "rb") as f:
     st.download_button("Download AI Readiness Questionnaire", f, file_name="AI_Readiness_Questionnaire_Template.xlsx")
-with open("KPI_Performance_Template_FULL.xlsx", "rb") as f:
+with open("KPI_Performance_Template_FULL_v2.xlsx", "rb") as f:
     st.download_button("Download KPI Performance Template (FULL)", f, file_name="KPI_Performance_Template_FULL.xlsx")
 
 st.markdown("### 📤 Step 2: Upload Completed Templates")
