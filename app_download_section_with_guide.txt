@@ -1,0 +1,44 @@
+
+import streamlit as st
+
+st.markdown("## 📥 Download Templates")
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    with open("Health_Check_Questionnaire_Template_v2.xlsx", "rb") as f:
+        st.download_button(
+            label="📄 Health Check Template",
+            data=f,
+            file_name="Health_Check_Questionnaire_Template_v2.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
+
+with col2:
+    with open("AI_Readiness_Questionnaire_Template_v2.xlsx", "rb") as f:
+        st.download_button(
+            label="🤖 AI Readiness Template",
+            data=f,
+            file_name="AI_Readiness_Questionnaire_Template_v2.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
+
+with col3:
+    with open("KPI_Performance_Template_v2.xlsx", "rb") as f:
+        st.download_button(
+            label="📊 KPI Performance Template",
+            data=f,
+            file_name="KPI_Performance_Template_v2.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
+
+st.markdown("---")
+st.markdown("### 📘 Supporting Document")
+
+with open("KPI_Calculation_Guide.pdf", "rb") as f:
+    st.download_button(
+        label="📘 Download KPI Calculation Guide (PDF)",
+        data=f,
+        file_name="KPI_Calculation_Guide.pdf",
+        mime="application/pdf"
+    )
