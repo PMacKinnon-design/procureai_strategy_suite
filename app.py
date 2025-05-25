@@ -4,6 +4,7 @@ import pandas as pd
 from strategy_report import generate_strategy_narrative
 from generate_pdf import generate_pdf_from_text
 from health_check_parser import parse_health_check
+from ai_readiness_parser import parse_ai_readiness
 import os
 from openai import OpenAI
 
@@ -28,25 +29,12 @@ if hc_file:
     st.subheader("🧠 Health Check Questionnaire Scores")
     st.dataframe(questionnaire_df)
 
-# Load and summarize AI Readiness
+# Load and parse AI Readiness
+ai_results_df = pd.DataFrame()
 if ai_file:
-    ai_readiness_df = pd.read_excel(ai_file, sheet_name=None)
-    ai_data = []
-
-    for sheet, df in ai_readiness_df.items():
-        if "Score (1–5)" in df.columns:
-            avg_score = df["Score (1–5)"].mean()
-            comment_summary = df["Comment"].dropna().iloc[0] if "Comment" in df.columns and not df["Comment"].dropna().empty else ""
-            ai_data.append({"Category": sheet, "Avg Score": round(avg_score, 2), "Comments Summary": comment_summary})
-
-    if ai_data:
-        overall_avg = round(pd.DataFrame(ai_data)["Avg Score"].mean(), 2)
-        ai_data.append({"Category": "Overall Average", "Avg Score": overall_avg, "Comments Summary": "—"})
-        ai_results_df = pd.DataFrame(ai_data, columns=["Category", "Avg Score", "Comments Summary"])
-        st.subheader("🤖 AI Readiness Score by Category")
-        st.dataframe(ai_results_df)
-    else:
-        ai_results_df = pd.DataFrame(columns=["Category", "Avg Score", "Comments Summary"])
+    ai_results_df = parse_ai_readiness(ai_file)
+    st.subheader("🤖 AI Readiness Score by Category")
+    st.dataframe(ai_results_df)
 
 # Generate Strategy Report
 if st.button("📝 Generate Strategy Report"):
