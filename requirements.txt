@@ -5,3 +5,4 @@ fpdf
 python-dotenv
 xlsxwriter
 openpyxl
+matplotlib
